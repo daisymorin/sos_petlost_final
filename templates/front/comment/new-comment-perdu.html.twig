@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau commentaire{% endblock %}
+
+{% block body %}
+
+    <div class="form">
+         <h2>Nouveau message</h2>
+
+        {{ include('/front/comment/_form.html.twig') }}
+
+        <p class="btn-return-show"><a href="{{ path('showTrouve', {'id': animal.id}) }}">Retour à l'annonce</a></p>
+
+    </div>
+
+{% endblock %}

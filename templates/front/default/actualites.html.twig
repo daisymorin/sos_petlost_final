@@ -1,0 +1,29 @@
+{% extends 'front/layout.html.twig' %}
+
+{% block title %}SOS PETLOST{% endblock %}
+
+{% block content %}
+
+<h2>Actualitès</h2>
+
+        {% for actuality in actualities %}
+
+            <div class="container-actuality">
+
+                <div class="info-actuality">
+
+                    <p class="name-actu">{{ actuality.title }}</p>
+                    <p class="info-img"><img class="imgActuality" src="{{ vich_uploader_asset(actuality.image, 'file') }}" alt="{{ actuality.title }}" /></p>
+                    <p class="content">{{ actuality.content |u.truncate(150, '...', false) }}</p>
+                    <p class="date-actu">{{ actuality.createdAt ? actuality.createdAt|date('d-m-Y') : '' }}</p>
+
+                    <p class="btn-actu-show"><a href="{{ path('showActualite', {'id': actuality.id}) }}">Lire la suite</a></p>
+                    
+                </div>
+
+            </div>
+                
+        {% endfor %}
+    {{ knp_pagination_render(actualities) }}
+
+{% endblock %}

@@ -1,0 +1,6 @@
+{{ form_start(form) }}
+   
+    <p>{{ form_label(form.username) }}{{ form_widget(form.username) }}
+    <p class="label-description">{{ form_label(form.coment) }}</p> <p> {{ form_widget(form.coment) }}</p>
+    <button class="btn-save">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}

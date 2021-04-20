@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle annonce{% endblock %}
+
+{% block body %}
+
+    <div class="form">
+         <h2>Nouvelle annonce</h2>
+
+        {{ include('user/annonce/_form.html.twig') }}
+
+        <p class="btn-list"><a href="{{ path('annonces') }}">Retour à la liste</a></p>
+
+    </div>
+
+{% endblock %}

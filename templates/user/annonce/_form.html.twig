@@ -1,0 +1,38 @@
+{{ form_start(form) }}
+
+
+    <div class="checkbox">
+         <p>{{ form_label(form.missing) }} {{ form_widget(form.missing) }}</p>
+         <p> {{ form_label(form.found) }} {{ form_widget(form.found) }}</p>
+    </div>
+
+     <div class="form-label">
+          <div class="form-row"><p>{{ form_label(form.name) }}</p> <p> {{ form_widget(form.name) }}</p></div>
+          <div class="form-row"><p>{{ form_label(form.race) }}</p> <p> {{ form_widget(form.race) }}</p></div>
+          <div class="form-row"><p>{{ form_label(form.sexe) }}</p> <p>  {{ form_widget(form.sexe) }}</p></div>
+          <div class="form-row"><p>{{ form_label(form.color) }}</p> <p>  {{ form_widget(form.color) }}</p></div>
+     </div>
+
+    <div class="checkbox">
+         <p>{{ form_label(form.microship) }} {{ form_widget(form.microship) }}</p>
+         <p> {{ form_label(form.sterelise) }} {{ form_widget(form.sterelise) }}</p>
+    </div>
+
+    <p class="label-description">{{ form_label(form.description) }}</p> <p> {{ form_widget(form.description) }}</p>
+    <p class="label-description" >{{ form_label(form.particularity) }}</p> <p> {{ form_widget(form.particularity) }}</p>
+
+     <div class="form-label">
+          <div class="form-row"><p>{{ form_label(form.address) }}</p> <p> {{ form_widget(form.address) }}</p></div>
+          <div class="form-row"><p>{{ form_label(form.postcode) }}</p> <p> {{ form_widget(form.postcode) }}</p></div>
+          <div class="form-row"><p>{{ form_label(form.city) }}</p> <p> {{ form_widget(form.city) }}</p></div>
+     </div>
+
+    <p>{{ form_label(form.animal_found) }} {{ form_widget(form.animal_found) }}</p>
+
+    <div class="form-image">
+          <p>{{ form_label(form.image.file) }} {{ form_widget(form.image.file) }}</p>
+    </div>
+
+    <button class="btn-save">{{ button_label|default('Enregistrer') }}</button>
+
+{{ form_end(form) }}

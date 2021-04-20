@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Actuality{% endblock %}
+
+{% block body %}
+
+    <div class="form">
+        <h2>Nouvelle actualité</h2>
+
+        {{ include('admin/actuality/_form.html.twig') }}
+
+         <p class="btn-list"><a href="{{ path('actuality_index') }}">Retour à la liste</a></p>
+
+    </div>
+{% endblock %}

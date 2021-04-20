@@ -1,0 +1,67 @@
+{% extends 'front/layout.html.twig' %}
+
+{% block title %}SOS PETLOST{% endblock %}
+
+{% block content %}
+
+    <p class="btn-retour"><a href="{{ path('animaux-disparus') }}">Retour aux annonces</a></p>
+
+    <div class="container2">
+
+        <div class="show-perdu">
+
+            {% if animal.name %}
+                 <p class="name">{{ animal.name }}</p>
+             {% else %}
+                <p class="name">Perdu</p>
+            {% endif %}
+
+            <div class="detail">
+
+                <p><img class="imgShowAnimal" src="{{ vich_uploader_asset(animal.image, 'file') }}" alt="{{ animal.name }}" /></p>
+                
+                <div class="presentation">
+                    <p>Race: {{ animal.race }}</p>
+                    <p>Sexe: {{ animal.sexe }}</p>
+                    <p>Couleur: {{ animal.color }}</p>
+                    <p>Identifié: {{ animal.microship ? 'Oui' : 'Non' }}</p>
+                    <p>Stérilisé: {{ animal.sterelise ? 'Oui' : 'Non' }}</p>
+                    <p>Particularité: {{ animal.particularity }}</p>
+                    <p class="date-show">Perdu le {{ animal.date ? animal.date|date('d/m/Y') : '' }}</p>
+                  
+                    <div class="adresse">
+                        <p class="sous-titre">Adresse où l'animal a disparu</p>
+                        <p>{{ animal.address }} {{ animal.postcode }} {{ animal.city }}</p>
+                    </div>
+
+                    <div class="contact">
+                        <p class="sous-titre">Vous l'avez trouvé ?</p>
+                        <p>Contactez son propriétaire au 0{{ animal.user.phonenumber }}</p>
+                        <p>ou à l'adresse mail suivante: {{ animal.user.email }}</p>
+                    </div>
+                   
+                </div>
+
+            </div>
+            
+            <p class="description">{{ animal.description }}</p>
+
+         
+        </div>
+
+        <p class="titre-comment">Commentaires</p>
+        <p class="btn-comment"><a href="{{ path('showCommentPerdu',{'id': animal.id}) }}">Publier un message</a></p>
+
+        {% for comment in animal.comment %}
+                 
+            <div class="show-comment">
+                <p class="comment-username">{{ comment.username ~ ' - ' ~ comment.createdAt|date('d/m/Y') }}</p>
+                <p class="comment">{{ comment.coment}}</p>
+            </div>
+        {% endfor %}
+
+
+    </div>
+    
+
+{% endblock %}

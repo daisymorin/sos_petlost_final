@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Animals{% endblock %}
+
+{% block body %}
+
+     <div class="form">
+        <h2>Nouvelle annonce</h2>
+
+        {{ include('admin/animals/_form.html.twig') }}
+
+         <p class="btn-list"><a href="{{ path('animals_index') }}">Retour à la liste</a></p>
+    </div>
+{% endblock %}

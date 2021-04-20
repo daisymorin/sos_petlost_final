@@ -1,0 +1,20 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Actuality{% endblock %}
+
+{% block body %}
+
+    <p class="btn-retour"><a href="{{ path('actuality_index') }}">Retour aux actualités</a></p>
+
+    <div class="info-actuality">
+                    
+        <p class="name">{{ actuality.title }}</h2>
+        <p class="info-img"><img class="imgActualityShow" src="{{ vich_uploader_asset(actuality.image, 'file') }}" alt="{{ actuality.title }}" /></p>
+        <p class="content">{{ actuality.content }}</p>
+        <p class="date-actu">{{ actuality.createdAt ? actuality.createdAt|date('d-m-Y') : '' }}</p>
+        
+    </div>
+
+
+    
+{% endblock %}

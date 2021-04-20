@@ -1,0 +1,43 @@
+ <header>
+
+    <div class="titre_principale">
+        <p>
+            <img class="logo" src="../../../images/logo.png" alt="Logo de Sospetlost" />
+        </p>
+
+        <h1>SOS PETLOST</h1>
+
+    </div>
+
+     <nav>
+
+        <ul>
+            <li><a href="{{path('home')}}">Accueil</a></li>
+            <li><a href="{{path('animaux-disparus')}}">Animaux Perdus</a></li>
+             <li><a href="{{path('animaux-trouve')}}">Animaux Retrouvés</a></li>
+            <li><a href="{{path('actualites')}}">Actualités</a></li>
+
+             {% if is_granted('ROLE_USER') %}
+                 <li><a href="{{path('annonces')}}">Mon compte</a>
+                    <ul class="sous">
+                         <li><a href="">Modifier mon profil</a></li>
+                        <li><a href="{{path('app_forgot_password_request')}}">Modifier mot de passe</a></li>
+                    </ul>
+                </li>
+             {% endif %}
+
+            {% if is_granted('ROLE_ADMIN') %}
+                 <li><a href="{{path('animals_index')}}">Admin</a></li>
+            {% endif %}
+
+             {% if is_granted('ROLE_USER') %}
+                <li><a href="/logout">Déconnexion</a></li>
+            {% else %}
+                <li><a href="/login">Connexion</a></li>
+                 <li><a href="/register">Inscription</a></li>
+             {% endif %}
+  
+        </ul>
+    </nav>
+
+</header>

@@ -1,0 +1,11 @@
+{{ form_start(form) }}
+
+    <p>{{ form_label(form.title) }} {{ form_widget(form.title) }}</p>
+    <p class="label-description">{{ form_label(form.content) }}</p> <p> {{ form_widget(form.content) }}</p>
+    
+    <div class="form-image">
+          <p>{{ form_label(form.image.file) }} {{ form_widget(form.image.file) }}</p>
+    </div>
+   
+    <button class="btn-save">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}

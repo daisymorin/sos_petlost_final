@@ -1,0 +1,80 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Animals{% endblock %}
+
+{% block body %}
+
+    <p class="btn-retour"><a href="{{ path('animals_index') }}">Retour aux annonces</a></p>
+
+    <div class="container2">
+
+        <div class="show-perdu">
+
+            {% if animal.name %}
+                 <p class="name">{{ animal.name }}</p>
+            {% else %}
+                <p class="name">Perdu</p>
+            {% endif %}
+
+            <div class="detail">
+
+                <p><img class="imgShowAnimal" src="{{ vich_uploader_asset(animal.image, 'file') }}" alt="{{ animal.name }}" /></p>
+
+                 <div class="presentation">
+
+                    <p>Race: {{ animal.race }}</p>
+                    <p>Sexe: {{ animal.sexe }}</p>
+                    <p>Couleur: {{ animal.color }}</p>
+
+                    {% if animal.microship %}
+                        <p>Identifié: {{ animal.microship ? 'Oui' : 'Non' }}</p>
+                     {% else %}
+                        <p>Identifié: Je ne sais pas</p>
+                    {% endif %}
+
+                    {% if animal.microship %}
+                        <p>Stérilisé: {{ animal.sterelise ? 'Oui' : 'Non' }}</p>
+                     {% else %}
+                        <p>Stérilisé: Je ne sais pas</p>
+                    {% endif %}
+
+                    <p>Particularité: {{ animal.particularity }}</p>
+
+                    {% if animal.missing %}
+                        <p class="date-show">Perdu le {{ animal.date ? animal.date|date('d/m/Y') : '' }}</p>
+                    {% else %} 
+                         <p class="date-show">Trouvé le {{ animal.date ? animal.date|date('d/m/Y') : '' }}</p>
+                     {% endif %}
+
+                     <div class="adresse">
+
+                        {% if animal.missing %}
+                            <p class="sous-titre">Adresse où l'animal a disparu</p>
+                            <p>{{ animal.address }} {{ animal.postcode }} {{ animal.city }}</p>
+                        {% else %} 
+                            <p class="sous-titre">Adresse où l'animal a été retrouvé</p>
+                            <p>{{ animal.address }} {{ animal.postcode }} {{ animal.city }}</p>
+                        {% endif %}
+                    </div>
+
+                    <div class="contact">
+
+                        {% if animal.missing %}
+                            <p class="sous-titre">Vous l'avez trouvé ?</p>
+                            <p>Contactez son propriétaire au 0{{ animal.user.phonenumber }} </p>
+                            <p>ou à l'adresse mail suivante: {{ animal.user.email }}</p>
+                        {% else %} 
+                            <p class="sous-titre">Vous l'avez reconnu ?</p>
+                            <p>Contactez le déclarant au 0{{ animal.user.phonenumber }}</p>
+                            <p>ou à l'adresse mail suivante: {{ animal.user.email }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+             <p class="description">{{ animal.description }}</p>
+        </div>
+    </div>
+
+  
+{% endblock %}

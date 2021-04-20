@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Animals{% endblock %}
+
+{% block body %}
+
+    <div class="form">
+        <h2>Modifier l'annonce</h2>
+
+        {{ include('admin/animals/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+         <p class="btn-list"><a href="{{ path('animals_index') }}">Retour à la liste</a></p>
+
+    </div>
+{% endblock %}
